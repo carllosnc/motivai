@@ -92,13 +92,8 @@ class AppDrawer extends StatelessWidget {
                 ],
               )
             ),
+
             const ListFolders()
-
-            // ListTile(
-            //   title: Text('Amor', style: _textStyle ),
-            //   onTap: () {},
-            // ),
-
           ],
         ),
       );
