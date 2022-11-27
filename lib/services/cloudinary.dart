@@ -13,12 +13,13 @@ class Cloudinary {
     _dio.options.baseUrl = baseUrl;
 
     // adding interceptor
-    _dio.interceptors.add(DioCacheManager( CacheConfig(baseUrl: baseUrl)).interceptor);
+    // _dio.interceptors.add(DioCacheManager( CacheConfig(baseUrl: baseUrl)).interceptor);
   }
 
   getImages() async{
     return _dio.post(
       '/resources/search',
+      options: buildCacheOptions(const Duration( days: 7 )),
       data: {
         "expression": "folder:motivai/*"
       }
