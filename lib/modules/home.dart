@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:motivai/widgets/app_bottom_sheet.dart';
 import '../models/image.dart';
 import '../utils/colors.dart';
 import '../widgets/app_card.dart';
-import '../widgets/app_drawer.dart';
 import '../services/cloudinary.dart';
 
 class ImageData extends StatelessWidget {
@@ -29,6 +29,7 @@ class ImageData extends StatelessWidget {
       }
 
       return ListView(
+        padding: const EdgeInsets.fromLTRB(0, 5, 0, 76),
         children: cards,
       );
     }
@@ -62,11 +63,29 @@ class HomePage extends StatelessWidget {
         backgroundColor: ProjectColors.main,
         title: const Text('Motivai', style: TextStyle(fontWeight: FontWeight.w700))
       ),
-      drawer: const AppDrawer(),
       body: Container(
         color: ProjectColors.main,
         child: const ImageData()
-      )
+      ),
+       floatingActionButton: FloatingActionButton.extended(
+        onPressed: (){
+          showModalBottomSheet(
+            context: context,
+            builder: (BuildContext context){
+              return const ButtonSheet();
+            }
+          );
+        },
+        backgroundColor: Colors.white,
+        label: const Text(
+          'CATEGORIAS',
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            color: ProjectColors.backdrop
+          ),
+        ),
+        icon: const Icon(Icons.star, color: ProjectColors.backdrop),
+      ),
     );
   }
 }
