@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:motivai/utils/colors.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'package:flutter/services.dart';
+import 'package:share_plus/share_plus.dart';
 
 class AppCard extends StatelessWidget {
   final String image;
@@ -21,7 +23,7 @@ class AppCard extends StatelessWidget {
 
             SizedBox(
               child: FadeInImage.memoryNetwork(
-                fadeInDuration: const Duration(milliseconds: 100),
+                fadeInDuration: const Duration(milliseconds: 60),
                 placeholder: kTransparentImage,
                 image: image,
                 width: 1000,
@@ -37,7 +39,14 @@ class AppCard extends StatelessWidget {
               color: ProjectColors.main,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
               elevation: 0,
-              onPressed: (){},
+              onPressed: () async{
+                Uint8List bytes = (await NetworkAssetBundle(Uri.parse(image))
+                .load(image)).buffer.asUint8List();
+
+                Share.shareXFiles(
+                  [XFile.fromData(bytes, name: 'motivai', mimeType: 'image/jpeg')]
+                );
+              },
               child: const Text(
                 'Compartilhar',
                 style: TextStyle(
