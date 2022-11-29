@@ -40,12 +40,15 @@ class AppCard extends StatelessWidget {
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
               elevation: 0,
               onPressed: () async{
+
+                // convert image to Uint8List
                 Uint8List bytes = (await NetworkAssetBundle(Uri.parse(image))
                 .load(image)).buffer.asUint8List();
 
                 Share.shareXFiles(
                   [XFile.fromData(bytes, name: 'motivai', mimeType: 'image/jpeg')]
                 );
+
               },
               child: const Text(
                 'Compartilhar',
