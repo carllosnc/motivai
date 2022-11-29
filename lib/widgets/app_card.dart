@@ -21,7 +21,8 @@ class AppCard extends StatelessWidget {
         child: Column(
           children: [
 
-            SizedBox(
+            Container(
+              color: Colors.black,
               child: FadeInImage.memoryNetwork(
                 fadeInDuration: const Duration(milliseconds: 60),
                 placeholder: kTransparentImage,
@@ -51,7 +52,7 @@ class AppCard extends StatelessWidget {
 
               },
               child: const Text(
-                'Compartilhar',
+                'COMPARTILHAR',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,
