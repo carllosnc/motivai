@@ -4,13 +4,17 @@ import 'package:motivai/utils/colors.dart';
 import '../models/folder.dart';
 import '../services/cloudinary.dart';
 
-class ListFolders extends StatelessWidget {
-  const ListFolders({super.key});
+class _ListFolders extends StatelessWidget {
+  final void Function(FolderModel)? callback;
+
+  const _ListFolders(this.callback);
 
   final _textStyle = const TextStyle(
     fontWeight: FontWeight.w700,
     fontSize: 16 ,
   );
+
+  // get images from cloudinary
 
   Future<List<FolderModel>> folders() async {
     var cloudinary = Cloudinary();
@@ -21,16 +25,23 @@ class ListFolders extends StatelessWidget {
     return folders;
   }
 
+  // show folder lists
+
   Widget showFolders(AsyncSnapshot<List<FolderModel>> snapshot, BuildContext context){
     List<Widget> tiles = [];
 
     if(snapshot.hasData){
       var folders = snapshot.data ?? [];
 
+      folders.add(FolderModel(
+        path: "motivai/*", name: 'tudo'
+      ));
+
       for (var folder in folders) {
         tiles.add(ListTile(
           title: Text(folder.name.capitalize(), style: _textStyle),
-          onTap: (){
+          onTap:(){
+            callback!(folder);
             Navigator.pop(context);
           },
         ));
@@ -66,8 +77,12 @@ class ListFolders extends StatelessWidget {
   }
 }
 
-class ButtonSheet extends StatelessWidget {
-  const ButtonSheet({super.key});
+// button sheet widget
+
+class AppButtonSheet extends StatelessWidget {
+  final void Function(FolderModel)? callback;
+
+  const AppButtonSheet({this.callback, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -78,8 +93,8 @@ class ButtonSheet extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Column(
-              children: const [
-                ListFolders()
+              children: [
+                _ListFolders(callback)
               ],
             ),
           ],
