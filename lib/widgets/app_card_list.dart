@@ -35,12 +35,35 @@ class _CardListState extends State<CardList> {
       images!.shuffle();
 
       for(var item in images){
-        cards.add(AppCard(image: item.secureUrl));
+        cards.add(
+          Align(
+            alignment: Alignment.center,
+            child: AppCard(image: item.secureUrl)
+          )
+        );
       }
 
       return ListView(
         padding: const EdgeInsets.fromLTRB(0, 5, 0, 76),
         children: cards,
+      );
+    }
+
+    if(snapshot.hasError) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.error, color: Colors.white, size: 60),
+            SizedBox(height: 10),
+            Text('Something went wrong', style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.w700
+              )
+            ),
+          ],
+        )
       );
     }
 
