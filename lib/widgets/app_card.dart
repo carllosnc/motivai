@@ -17,6 +17,7 @@ class AppCard extends StatelessWidget {
 
     return Card(
       child: Container(
+        width: 500,
         padding: const EdgeInsets.all(5),
         child: Column(
           children: [
