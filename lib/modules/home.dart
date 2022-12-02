@@ -3,6 +3,7 @@ import 'package:motivai/widgets/app_bottom_sheet.dart';
 import '../models/folder.dart';
 import '../utils/colors.dart';
 import '../widgets/app_card_list.dart';
+import '../extensions/string.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,6 +20,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: ProjectColors.main,
         title: Text('Motivai  •  $_category', style: const TextStyle(fontWeight: FontWeight.w700))
       ),
@@ -26,6 +28,7 @@ class _HomePageState extends State<HomePage> {
         color: ProjectColors.main,
         child: CardList(path: _path)
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
         onPressed: (){
           showModalBottomSheet(
@@ -33,7 +36,7 @@ class _HomePageState extends State<HomePage> {
             builder: (BuildContext context){
               return AppButtonSheet(callback: (FolderModel folder){
                 setState(() {
-                  _category = folder.name;
+                  _category = folder.name.capitalize();
                   _path = folder.path;
                 });
               });
