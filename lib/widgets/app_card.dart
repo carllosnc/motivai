@@ -16,6 +16,7 @@ class AppCard extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Card(
+      elevation: 0,
       child: Container(
         width: 500,
         padding: const EdgeInsets.all(5),
