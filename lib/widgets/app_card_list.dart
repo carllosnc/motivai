@@ -30,6 +30,7 @@ class _CardListState extends State<CardList> {
   Widget showCards(AsyncSnapshot<List<ImageModel>> snapshot, BuildContext context){
     List<Widget> cards = [];
 
+    // has data
     if(snapshot.hasData) {
       var images = snapshot.data;
       images!.shuffle();
@@ -49,6 +50,7 @@ class _CardListState extends State<CardList> {
       );
     }
 
+    // has some error
     if(snapshot.hasError) {
       return Center(
         child: Column(
@@ -67,6 +69,7 @@ class _CardListState extends State<CardList> {
       );
     }
 
+    // loading
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: const Center(child: CircularProgressIndicator(
@@ -75,6 +78,7 @@ class _CardListState extends State<CardList> {
     );
   }
 
+  // render widget
   @override
   Widget build(BuildContext context){
     return FutureBuilder<List<ImageModel>>(
