@@ -20,11 +20,13 @@ class _CardListState extends State<CardList> {
   final ScrollController _controller = ScrollController();
 
   scrollUp(){
-    _controller.animateTo(
-      0,
-      duration: const Duration(milliseconds: 800),
-      curve: Curves.easeIn
-    );
+    if(_controller.hasClients){
+      _controller.animateTo(
+        0,
+        duration: const Duration(milliseconds: 800),
+        curve: Curves.easeIn
+      );
+    }
   }
 
   Future<List<ImageModel>> fetchImages() async{
