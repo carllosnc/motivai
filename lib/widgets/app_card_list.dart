@@ -17,8 +17,20 @@ class CardList extends StatefulWidget {
 
 class _CardListState extends State<CardList> {
 
+  final ScrollController _controller = ScrollController();
+
+  scrollUp(){
+    _controller.animateTo(
+      0,
+      duration: const Duration(milliseconds: 800),
+      curve: Curves.easeIn
+    );
+  }
+
   Future<List<ImageModel>> fetchImages() async{
     var cloudinary = Cloudinary();
+
+    scrollUp();
 
     var res = await cloudinary.getImages(path: widget.path);
 
@@ -45,7 +57,8 @@ class _CardListState extends State<CardList> {
       }
 
       return ListView(
-        padding: const EdgeInsets.fromLTRB(0, 5, 0, 76),
+        controller: _controller,
+        padding: const EdgeInsets.fromLTRB(8, 10, 8, 76),
         children: cards,
       );
     }
@@ -58,7 +71,7 @@ class _CardListState extends State<CardList> {
           children: const [
             Icon(Icons.error, color: Colors.white, size: 60),
             SizedBox(height: 10),
-            Text('Something went wrong', style: TextStyle(
+            Text('Ooops, o carregamento falhou!', style: TextStyle(
                 color: Colors.white,
                 fontSize: 16,
                 fontWeight: FontWeight.w700
