@@ -42,6 +42,7 @@ dependencies:
   flutter_launcher_icons: ^0.9.3
   flutter_native_splash: ^2.2.16
   share_plus: ^6.3.0
+  google_fonts: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -82,13 +83,13 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Quicksand
-      fonts:
-        - asset: fonts/Quicksand/Quicksand-Regular.ttf
-          style: normal
-        - asset: fonts/Quicksand/Quicksand-Bold.ttf
-          weight: 700
+  # fonts:
+  #   - family: Quicksand
+  #     fonts:
+  #       - asset: fonts/Quicksand/Quicksand-Regular.ttf
+  #         style: normal
+  #       - asset: fonts/Quicksand/Quicksand-Bold.ttf
+  #         weight: 700
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
