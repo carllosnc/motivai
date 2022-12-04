@@ -40,6 +40,7 @@ dependencies:
   transparent_image: ^2.0.0
   dio_http_cache: ^0.3.0
   flutter_launcher_icons: ^0.9.3
+  flutter_native_splash: ^2.2.16
   share_plus: ^6.3.0
 
 dev_dependencies:
@@ -82,18 +83,10 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Nunito
-      fonts:
-        - asset: fonts/Nunito/Nunito-Regular.ttf
-          style: normal
-        - asset: fonts/Nunito/Nunito-Regular.ttf
-        - asset: fonts/Nunito/Nunito-Bold.ttf
-          weight: 700
     - family: Quicksand
       fonts:
         - asset: fonts/Quicksand/Quicksand-Regular.ttf
           style: normal
-        - asset: fonts/Quicksand/Quicksand-Regular.ttf
         - asset: fonts/Quicksand/Quicksand-Bold.ttf
           weight: 700
 
