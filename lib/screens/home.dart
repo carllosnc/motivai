@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: ProjectColors.main,
-        title: Text('Motivai  •  $_category', style: const TextStyle(fontWeight: FontWeight.w700))
+        title: Text('Motivai  •  $_category')
       ),
       body: Container(
         color: ProjectColors.main,
@@ -43,6 +43,7 @@ class _HomePageState extends State<HomePage> {
             }
           );
         },
+
         backgroundColor: Colors.white,
         label: const Text(
           'CATEGORIAS',
@@ -51,7 +52,6 @@ class _HomePageState extends State<HomePage> {
             color: ProjectColors.backdrop
           ),
         ),
-        icon: const Icon(Icons.star, color: ProjectColors.backdrop),
       ),
     );
   }

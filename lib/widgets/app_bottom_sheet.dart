@@ -10,7 +10,6 @@ class _ListFolders extends StatelessWidget {
   const _ListFolders(this.callback);
 
   final _textStyle = const TextStyle(
-    fontWeight: FontWeight.w700,
     fontSize: 16 ,
   );
 
