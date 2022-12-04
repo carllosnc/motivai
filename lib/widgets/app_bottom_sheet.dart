@@ -54,6 +54,17 @@ class _ListFolders extends StatelessWidget {
       );
     }
 
+    if (snapshot.hasError){
+      return (
+        const Padding(
+          padding: EdgeInsets.fromLTRB(10, 60, 10, 10),
+          child: Center(
+            child: Text('Falha no carregamento!', style: TextStyle(fontWeight: FontWeight.w700)),
+          ),
+        )
+      );
+    }
+
     return const SizedBox(
       height: 100,
       child: Center(
