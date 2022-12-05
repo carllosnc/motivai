@@ -20,6 +20,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         centerTitle: true,
         backgroundColor: ProjectColors.main,
         title: Text('Motivai  •  $_category')
@@ -49,7 +50,7 @@ class _HomePageState extends State<HomePage> {
           'CATEGORIAS',
           style: TextStyle(
             fontWeight: FontWeight.w700,
-            color: ProjectColors.backdrop
+            color: ProjectColors.font
           ),
         ),
       ),
