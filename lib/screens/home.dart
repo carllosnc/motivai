@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String _category  = 'tudo';
+  String _category  = 'Tudo';
   String _path = 'motivai/*';
 
   @override
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: ProjectColors.main,
-        title: Text('Motivai  •  $_category')
+        title: Text('Motivai ${_category == 'Tudo' ? '' : ' •  $_category'}')
       ),
       body: Container(
         color: ProjectColors.main,
