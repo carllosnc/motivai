@@ -19,7 +19,7 @@ class AppCard extends StatelessWidget {
       elevation: 0,
       child: Container(
         width: 500,
-        padding: const EdgeInsets.all(5),
+        padding: const EdgeInsets.all(3),
         child: Column(
           children: [
 
@@ -34,7 +34,7 @@ class AppCard extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 5),
+            const SizedBox(height: 3),
 
             MaterialButton(
               minWidth: double.infinity,
