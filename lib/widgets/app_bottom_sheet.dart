@@ -10,7 +10,8 @@ class _ListFolders extends StatelessWidget {
   const _ListFolders(this.callback);
 
   final _textStyle = const TextStyle(
-    fontSize: 16 ,
+    fontSize: 16,
+    color: Colors.white
   );
 
   // get images from cloudinary
@@ -38,14 +39,15 @@ class _ListFolders extends StatelessWidget {
 
       for (var folder in folders) {
         tiles.add(ListTile(
-          title: Text(folder.name.capitalize(), style: _textStyle),
-          onTap:(){
-            callback!(folder);
-            Navigator.pop(context);
-          },
-        ));
+            title: Text(folder.name.capitalize(), style: _textStyle),
+            onTap:(){
+              callback!(folder);
+              Navigator.pop(context);
+            },
+          ),
+        );
 
-        tiles.add(const Divider(height: 0));
+        tiles.add(const Divider(height: 0, color: ProjectColors.border));
       }
 
       return Column(
@@ -70,7 +72,7 @@ class _ListFolders extends StatelessWidget {
         child: SizedBox(
           width: 25,
           height: 25,
-          child: CircularProgressIndicator(color: ProjectColors.main),
+          child: CircularProgressIndicator(color: Colors.white),
         ),
       ),
     );
@@ -87,8 +89,6 @@ class _ListFolders extends StatelessWidget {
   }
 }
 
-// button sheet widget
-
 class AppButtonSheet extends StatelessWidget {
   final void Function(FolderModel)? callback;
 
@@ -96,7 +96,8 @@ class AppButtonSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      color: ProjectColors.sheet,
       height: 300,
       child: SingleChildScrollView(
         child: Column(
