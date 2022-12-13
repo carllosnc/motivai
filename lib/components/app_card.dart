@@ -26,7 +26,7 @@ class AppCard extends StatelessWidget {
             Container(
               color: Colors.black,
               child: FadeInImage.memoryNetwork(
-                fadeInDuration: const Duration(milliseconds: 60),
+                fadeInDuration: const Duration(milliseconds: 300),
                 placeholder: kTransparentImage,
                 image: image,
                 width: 1000,

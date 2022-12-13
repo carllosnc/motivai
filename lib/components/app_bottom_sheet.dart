@@ -1,31 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:motivai/extensions/string.dart';
+import 'package:motivai/repositories/folder.repository.dart';
 import 'package:motivai/utils/colors.dart';
-import '../models/folder.dart';
-import '../services/cloudinary.dart';
+import 'package:motivai/models/folder.model.dart';
 
 class _ListFolders extends StatelessWidget {
   final void Function(FolderModel)? callback;
 
-  const _ListFolders(this.callback);
+  _ListFolders(this.callback);
 
   final _textStyle = const TextStyle(
     fontSize: 16,
     color: Colors.white
   );
 
-  // get images from cloudinary
-
-  Future<List<FolderModel>> folders() async {
-    var cloudinary = Cloudinary();
-    var res = await cloudinary.getFolder();
-
-    var folders = (res.data['folders'] as List).map((item) => FolderModel.fromJson(item)).toList();
-
-    return folders;
-  }
-
-  // show folder lists
+  final FolderRepository folderRepository = FolderRepository();
 
   Widget showFolders(AsyncSnapshot<List<FolderModel>> snapshot, BuildContext context){
     List<Widget> tiles = [];
@@ -33,9 +22,9 @@ class _ListFolders extends StatelessWidget {
     if(snapshot.hasData){
       var folders = snapshot.data ?? [];
 
-      folders.add(FolderModel(
-        path: "motivai/*", name: 'tudo'
-      ));
+      folders.add(
+        FolderModel(path: "motivai/*", name: 'tudo')
+      );
 
       for (var folder in folders) {
         tiles.add(ListTile(
@@ -47,7 +36,7 @@ class _ListFolders extends StatelessWidget {
           ),
         );
 
-        tiles.add(const Divider(height: 0, color: ProjectColors.border));
+        tiles.add(const Divider(height: 0, color: Color.fromARGB(255, 13, 136, 79)));
       }
 
       return Column(
@@ -81,7 +70,7 @@ class _ListFolders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: folders(),
+      future: folderRepository.getFolders(),
       builder: (context, snapshot){
         return showFolders(snapshot, context);
       }

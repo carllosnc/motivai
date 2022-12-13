@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/image.dart';
-import '../services/cloudinary.dart';
-import 'app_card.dart';
+import 'package:motivai/models/image.model.dart';
+import 'package:motivai/components/app_card.dart';
+import 'package:motivai/repositories/images.repository.dart';
 
 class CardList extends StatefulWidget {
   final String path;
@@ -16,32 +16,23 @@ class CardList extends StatefulWidget {
 }
 
 class _CardListState extends State<CardList> {
-
   final ScrollController _controller = ScrollController();
+  final ImagesRepository imagesRepository = ImagesRepository();
 
   scrollUp(){
     if(_controller.hasClients){
       _controller.animateTo(
         0,
-        duration: const Duration(milliseconds: 800),
-        curve: Curves.easeIn
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.linear
       );
     }
   }
 
-  Future<List<ImageModel>> fetchImages() async{
-    var cloudinary = Cloudinary();
-
-    scrollUp();
-
-    var res = await cloudinary.getImages(path: widget.path);
-
-    List<ImageModel> images = (res.data['resources'] as List).map((item) => ImageModel.fromJson(item)).toList();
-
-    return images;
-  }
-
-  Widget showCards(AsyncSnapshot<List<ImageModel>> snapshot, BuildContext context){
+  Widget showCards(
+    AsyncSnapshot<List<ImageModel>> snapshot,
+    BuildContext context
+  ){
     List<Widget> cards = [];
 
     // has data
@@ -65,7 +56,6 @@ class _CardListState extends State<CardList> {
       );
     }
 
-    // has some error
     if(snapshot.hasError) {
       return Center(
         child: Column(
@@ -76,7 +66,6 @@ class _CardListState extends State<CardList> {
             Text('Ooops, o carregamento falhou!', style: TextStyle(
                 color: Colors.white,
                 fontSize: 16,
-                fontWeight: FontWeight.w700
               )
             ),
           ],
@@ -91,14 +80,16 @@ class _CardListState extends State<CardList> {
         color: Colors.white
       ))
     );
+
   }
 
   // render widget
   @override
   Widget build(BuildContext context){
     return FutureBuilder<List<ImageModel>>(
-      future: fetchImages(),
-      builder: (context, snapshot){
+      future: imagesRepository.getImages(path: widget.path),
+      builder: (context, snapshot) {
+        scrollUp();
         return showCards(snapshot, context);
       },
     );
