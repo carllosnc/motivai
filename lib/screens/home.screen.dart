@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:motivai/components/app_bottom_sheet.dart';
-import 'package:motivai/components/app_card_list.dart';
-import 'package:motivai/extensions/string.dart';
+import 'package:motivai/components/bottom-sheet.component.dart';
+import 'package:motivai/components/card-list.component.dart';
+import 'package:motivai/extensions/string.extension.dart';
 import 'package:motivai/models/folder.model.dart';
 import 'package:motivai/utils/colors.dart';
 
@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
         color: ProjectColors.main,
-        child: CardList(path: _path)
+        child: CardListComponent(path: _path)
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
           showModalBottomSheet(
             context: context,
             builder: (BuildContext context){
-              return AppButtonSheet(callback: (FolderModel folder){
+              return ButtonSheetComponent(callback: (FolderModel folder){
                 setState(() {
                   _category = folder.name.capitalize();
                   _path = folder.path;
