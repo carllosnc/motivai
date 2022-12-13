@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:motivai/widgets/app_bottom_sheet.dart';
-import '../models/folder.dart';
-import '../utils/colors.dart';
-import '../widgets/app_card_list.dart';
-import '../extensions/string.dart';
+import 'package:motivai/components/app_bottom_sheet.dart';
+import 'package:motivai/components/app_card_list.dart';
+import 'package:motivai/extensions/string.dart';
+import 'package:motivai/models/folder.model.dart';
+import 'package:motivai/utils/colors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
