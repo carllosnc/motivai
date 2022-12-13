@@ -44,7 +44,6 @@ class AppCard extends StatelessWidget {
               elevation: 0,
               onPressed: () async{
 
-                // convert image to Uint8List
                 Uint8List bytes = (await NetworkAssetBundle(Uri.parse(image))
                 .load(image)).buffer.asUint8List();
 

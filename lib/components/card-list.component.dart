@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:motivai/models/image.model.dart';
-import 'package:motivai/components/app_card.dart';
+import 'package:motivai/components/card.component.dart';
 import 'package:motivai/repositories/images.repository.dart';
 
-class CardList extends StatefulWidget {
+class CardListComponent extends StatefulWidget {
   final String path;
 
-  const CardList({
+  const CardListComponent({
     required this.path,
     super.key
   });
 
   @override
-  State<CardList> createState() => _CardListState();
+  State<CardListComponent> createState() => _CardListComponentState();
 }
 
-class _CardListState extends State<CardList> {
+class _CardListComponentState extends State<CardListComponent> {
   final ScrollController _controller = ScrollController();
   final ImagesRepository imagesRepository = ImagesRepository();
 
@@ -38,6 +38,7 @@ class _CardListState extends State<CardList> {
     // has data
     if(snapshot.hasData) {
       var images = snapshot.data;
+
       images!.shuffle();
 
       for(var item in images){

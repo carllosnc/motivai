@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:motivai/extensions/string.dart';
+import 'package:motivai/extensions/string.extension.dart';
 import 'package:motivai/repositories/folder.repository.dart';
 import 'package:motivai/utils/colors.dart';
 import 'package:motivai/models/folder.model.dart';
 
-class _ListFolders extends StatelessWidget {
+class ButtonSheetComponent extends StatelessWidget {
   final void Function(FolderModel)? callback;
 
-  _ListFolders(this.callback);
+  ButtonSheetComponent({this.callback, super.key});
 
   final _textStyle = const TextStyle(
     fontSize: 16,
@@ -16,7 +16,10 @@ class _ListFolders extends StatelessWidget {
 
   final FolderRepository folderRepository = FolderRepository();
 
-  Widget showFolders(AsyncSnapshot<List<FolderModel>> snapshot, BuildContext context){
+  Widget showFolders(
+    AsyncSnapshot<List<FolderModel>> snapshot,
+    BuildContext context
+  ){
     List<Widget> tiles = [];
 
     if(snapshot.hasData){
@@ -49,7 +52,10 @@ class _ListFolders extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.fromLTRB(10, 60, 10, 10),
           child: Center(
-            child: Text('Falha no carregamento!', style: TextStyle(fontWeight: FontWeight.w700)),
+            child: Text(
+              'Falha no carregamento!',
+              style: TextStyle(fontWeight: FontWeight.w700)
+            ),
           ),
         )
       );
@@ -69,22 +75,6 @@ class _ListFolders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: folderRepository.getFolders(),
-      builder: (context, snapshot){
-        return showFolders(snapshot, context);
-      }
-    );
-  }
-}
-
-class AppButtonSheet extends StatelessWidget {
-  final void Function(FolderModel)? callback;
-
-  const AppButtonSheet({this.callback, super.key});
-
-  @override
-  Widget build(BuildContext context) {
     return Container(
       color: ProjectColors.sheet,
       height: 300,
@@ -92,11 +82,12 @@ class AppButtonSheet extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              children: [
-                _ListFolders(callback)
-              ],
-            ),
+            FutureBuilder(
+              future: folderRepository.getFolders(),
+              builder: (context, snapshot){
+                return showFolders(snapshot, context);
+              }
+            )
           ],
         ),
       ),
