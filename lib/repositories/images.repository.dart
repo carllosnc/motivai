@@ -6,7 +6,7 @@ import 'package:motivai/utils/api.dart';
 class ImagesRepository {
   final Dio _dio = Dio();
 
-  Future<List<ImageModel>> getImages({ String path = 'motivai/*' }) async{
+  Future<List<ImageModel>> getImages({ String path = 'motivai/*' }) async {
     var res = await _dio.post(
       Api.url('/resources/search'),
       options: buildCacheOptions(const Duration( days: 7 )),
@@ -15,7 +15,11 @@ class ImagesRepository {
       }
     );
 
-    List<ImageModel> images = (res.data['resources'] as List).map((item) => ImageModel.fromJson(item)).toList();
+    List<ImageModel> images = [];
+
+    for (var item in (res.data['resources'] as List)) {
+      images.add(ImageModel.fromJson(item));
+    }
 
     return images;
   }
