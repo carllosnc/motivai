@@ -1,15 +1,11 @@
-import 'package:dio/dio.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:motivai/models/folder.model.dart';
-import 'package:motivai/services/cloudinary.service.dart';
+import 'package:motivai/repositories/repository.dart';
 
-class FolderRepository {
-  final Dio _dio = Dio();
-  final cloudinary = Cloudinary();
-
+class FolderRepository extends Repository {
   Future<List<FolderModel>> getFolders() async {
-    var res = await _dio.get(
-      cloudinary.service('/folders/motivai'),
+    var res = await dio.get(
+      '/folders/motivai',
       options: buildCacheOptions(const Duration( days: 7))
     );
 
