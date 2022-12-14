@@ -1,14 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:motivai/models/image.model.dart';
-import 'package:motivai/utils/api.dart';
+import 'package:motivai/services/cloudinary.service.dart';
 
 class ImagesRepository {
   final Dio _dio = Dio();
+  final cloudinary = Cloudinary();
 
   Future<List<ImageModel>> getImages({ String path = 'motivai/*' }) async {
     var res = await _dio.post(
-      Api.url('/resources/search'),
+      cloudinary.service('/resources/search'),
       options: buildCacheOptions(const Duration( days: 7 )),
       data: {
         "expression": "folder:$path"
