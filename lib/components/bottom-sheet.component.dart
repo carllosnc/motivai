@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:motivai/controllers/home.controller.dart';
 import 'package:motivai/extensions/string.extension.dart';
 import 'package:motivai/repositories/folder.repository.dart';
 import 'package:motivai/utils/colors.dart';
 import 'package:motivai/models/folder.model.dart';
 
 class ButtonSheetComponent extends StatelessWidget {
-  final void Function(FolderModel)? callback;
-
-  ButtonSheetComponent({this.callback, super.key});
+  ButtonSheetComponent({super.key});
 
   final _textStyle = const TextStyle(
     fontSize: 16,
@@ -33,7 +32,7 @@ class ButtonSheetComponent extends StatelessWidget {
         tiles.add(ListTile(
             title: Text(folder.name.capitalize(), style: _textStyle),
             onTap:(){
-              callback!(folder);
+              HomeController.instance.setCategory(folder);
               Navigator.pop(context);
             },
           ),
