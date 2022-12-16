@@ -4,7 +4,7 @@ import 'package:motivai/repositories/repository.dart';
 
 class ImagesRepository extends Repository {
   Future<List<ImageModel>> getImages({ String path = 'motivai/*' }) async {
-    var res = await dio.post(
+    var res = await httpClient.post(
       '/resources/search',
       data: {
         "expression": "folder:$path"

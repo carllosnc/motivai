@@ -4,7 +4,7 @@ import 'package:motivai/repositories/repository.dart';
 
 class FolderRepository extends Repository {
   Future<List<FolderModel>> getFolders() async {
-    var res = await dio.get(
+    var res = await httpClient.get(
       '/folders/motivai',
       options: buildCacheOptions(const Duration( days: 7))
     );
