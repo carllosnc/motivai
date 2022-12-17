@@ -1,6 +1,6 @@
 import 'package:dio_http_cache/dio_http_cache.dart';
-import 'package:motivai/models/folder.model.dart';
-import 'package:motivai/repositories/repository.dart';
+import '/models/folder.model.dart';
+import '/repositories/repository.dart';
 
 class FolderRepository extends Repository {
   Future<List<FolderModel>> getFolders() async {

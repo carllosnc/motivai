@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:motivai/models/image.model.dart';
-import 'package:motivai/components/card.component.dart';
-import 'package:motivai/repositories/images.repository.dart';
+import '/models/image.model.dart';
+import '/components/card.component.dart';
+import '/repositories/images.repository.dart';
 
 class CardListComponent extends StatefulWidget {
   final String path;

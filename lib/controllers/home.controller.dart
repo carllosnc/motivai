@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:motivai/models/folder.model.dart';
+import '/models/folder.model.dart';
 
 class HomeController {
   static final instance = HomeController._();

@@ -1,6 +1,6 @@
 import 'package:dio_http_cache/dio_http_cache.dart';
-import 'package:motivai/models/image.model.dart';
-import 'package:motivai/repositories/repository.dart';
+import '/models/image.model.dart';
+import '/repositories/repository.dart';
 
 class ImagesRepository extends Repository {
   Future<List<ImageModel>> getImages({ String path = 'motivai/*' }) async {

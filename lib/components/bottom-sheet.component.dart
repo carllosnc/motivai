@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:motivai/controllers/home.controller.dart';
-import 'package:motivai/extensions/string.extension.dart';
-import 'package:motivai/repositories/folder.repository.dart';
-import 'package:motivai/utils/colors.dart';
-import 'package:motivai/models/folder.model.dart';
+import '/controllers/home.controller.dart';
+import '/extensions/string.extension.dart';
+import '/repositories/folder.repository.dart';
+import '/utils/colors.dart';
+import '/models/folder.model.dart';
 
 class ButtonSheetComponent extends StatelessWidget {
   ButtonSheetComponent({super.key});
