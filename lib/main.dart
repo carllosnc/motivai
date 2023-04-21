@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '/utils/colors.dart';
-import '/screens/home.screen.dart';
+import 'core/utils/colors.dart';
+import 'app.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,16 +9,9 @@ void main(List<String> args) async {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       systemNavigationBarColor: ProjectColors.main,
-      statusBarColor: ProjectColors.main
-    )
+      statusBarColor: ProjectColors.main,
+    ),
   );
 
-  runApp(MaterialApp(
-    title: 'Motivai',
-    theme: ThemeData(
-      textTheme: GoogleFonts.robotoTextTheme()
-    ),
-    debugShowCheckedModeBanner: false,
-    home: const HomePage(),
-  ));
+  runApp(const App());
 }

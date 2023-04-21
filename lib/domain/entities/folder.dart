@@ -4,13 +4,13 @@ class FolderModel {
 
   FolderModel({
     required this.path,
-    required this.name
+    required this.name,
   });
 
-  factory FolderModel.fromJson(Map<String, dynamic> json){
+  factory FolderModel.fromJson(Map<String, dynamic> json) {
     return FolderModel(
       path: json['path'],
-      name: json['name']
+      name: json['name'],
     );
   }
 }

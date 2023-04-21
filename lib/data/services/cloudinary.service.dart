@@ -4,11 +4,12 @@ class Cloudinary {
   final _cloudName = 'c4co';
   var baseUrl = '';
 
-  Cloudinary(){
-    baseUrl = 'https://$_apiKey:$_apiSecret@api.cloudinary.com/v1_1/$_cloudName';
+  Cloudinary() {
+    baseUrl =
+        'https://$_apiKey:$_apiSecret@api.cloudinary.com/v1_1/$_cloudName';
   }
 
-  service(String path){
+  service(String path) {
     return '$baseUrl$path';
   }
 }

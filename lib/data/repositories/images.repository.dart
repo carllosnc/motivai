@@ -1,15 +1,13 @@
 import 'package:dio_http_cache/dio_http_cache.dart';
-import '/models/image.model.dart';
-import '/repositories/repository.dart';
+import '../../domain/entities/image.dart';
+import '/data/repositories/repository.dart';
 
 class ImagesRepository extends Repository {
-  Future<List<ImageModel>> getImages({ String path = 'motivai/*' }) async {
+  Future<List<ImageModel>> getImages({String path = 'motivai/*'}) async {
     var res = await httpClient.post(
       '/resources/search',
-      data: {
-        "expression": "folder:$path"
-      },
-      options: buildCacheOptions(const Duration( days: 7 )),
+      data: {"expression": "folder:$path"},
+      options: buildCacheOptions(const Duration(days: 7)),
     );
 
     List<ImageModel> images = [];

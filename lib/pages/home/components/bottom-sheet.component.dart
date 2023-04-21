@@ -1,44 +1,43 @@
 import 'package:flutter/material.dart';
-import '/controllers/home.controller.dart';
-import '/extensions/string.extension.dart';
-import '/repositories/folder.repository.dart';
-import '/utils/colors.dart';
-import '/models/folder.model.dart';
+import '../home_controller.dart';
+import '../../../core/extensions/string.extension.dart';
+import '../../../data/repositories/folder.repository.dart';
+import '../../../core/utils/colors.dart';
+import '../../../domain/entities/folder.dart';
 
 class ButtonSheetComponent extends StatelessWidget {
   ButtonSheetComponent({super.key});
 
-  final _textStyle = const TextStyle(
-    fontSize: 16,
-    color: Colors.white
-  );
+  final _textStyle = const TextStyle(fontSize: 16, color: Colors.white);
 
   final FolderRepository folderRepository = FolderRepository();
 
   Widget showFolders(
     AsyncSnapshot<List<FolderModel>> snapshot,
-    BuildContext context
-  ){
+    BuildContext context,
+  ) {
     List<Widget> tiles = [];
 
-    if(snapshot.hasData){
+    if (snapshot.hasData) {
       var folders = snapshot.data ?? [];
 
       folders.add(
-        FolderModel(path: "motivai/*", name: 'tudo')
+        FolderModel(path: "motivai/*", name: 'tudo'),
       );
 
       for (var folder in folders) {
-        tiles.add(ListTile(
+        tiles.add(
+          ListTile(
             title: Text(folder.name.capitalize(), style: _textStyle),
-            onTap:(){
+            onTap: () {
               HomeController.instance.setCategory(folder);
               Navigator.pop(context);
             },
           ),
         );
 
-        tiles.add(const Divider(height: 0, color: Color.fromARGB(255, 13, 136, 79)));
+        tiles.add(
+            const Divider(height: 0, color: Color.fromARGB(255, 13, 136, 79)));
       }
 
       return Column(
@@ -46,18 +45,16 @@ class ButtonSheetComponent extends StatelessWidget {
       );
     }
 
-    if (snapshot.hasError){
-      return (
-        const Padding(
-          padding: EdgeInsets.fromLTRB(10, 60, 10, 10),
-          child: Center(
-            child: Text(
-              'Falha no carregamento!',
-              style: TextStyle(fontWeight: FontWeight.w700)
-            ),
+    if (snapshot.hasError) {
+      return (const Padding(
+        padding: EdgeInsets.fromLTRB(10, 60, 10, 10),
+        child: Center(
+          child: Text(
+            'Falha no carregamento!',
+            style: TextStyle(fontWeight: FontWeight.w700),
           ),
-        )
-      );
+        ),
+      ));
     }
 
     return const SizedBox(
@@ -82,11 +79,10 @@ class ButtonSheetComponent extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FutureBuilder(
-              future: folderRepository.getFolders(),
-              builder: (context, snapshot){
-                return showFolders(snapshot, context);
-              }
-            )
+                future: folderRepository.getFolders(),
+                builder: (context, snapshot) {
+                  return showFolders(snapshot, context);
+                })
           ],
         ),
       ),
