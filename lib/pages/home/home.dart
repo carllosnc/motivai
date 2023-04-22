@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'components/bottom-sheet.component.dart';
-import 'components/card-list.component.dart';
-import '../../domain/entities/folder.dart';
-import '../../core/utils/colors.dart';
+
+import '/domain/domain.dart';
+import '/core/core.dart';
+
+import './components/bottom_sheet_component.dart';
+import 'components/card_list_component.dart';
 import 'home_controller.dart';
-import '../../core/extensions/string.extension.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,7 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<FolderModel>(
+    return ValueListenableBuilder<Folder>(
       valueListenable: HomeController.instance.category,
       builder: (context, value, child) {
         return Scaffold(

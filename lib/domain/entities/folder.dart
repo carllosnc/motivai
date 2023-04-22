@@ -1,14 +1,14 @@
-class FolderModel {
+class Folder {
   String path;
   String name;
 
-  FolderModel({
+  Folder({
     required this.path,
     required this.name,
   });
 
-  factory FolderModel.fromJson(Map<String, dynamic> json) {
-    return FolderModel(
+  factory Folder.fromJson(Map<String, dynamic> json) {
+    return Folder(
       path: json['path'],
       name: json['name'],
     );

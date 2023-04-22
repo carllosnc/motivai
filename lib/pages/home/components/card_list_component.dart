@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../domain/entities/image.dart';
-import './card.component.dart';
-import '../../../data/repositories/images.repository.dart';
+import 'package:motivai/domain/domain.dart';
+import '/data/data.dart';
+import './card_component.dart';
 
 class CardListComponent extends StatefulWidget {
   final String path;
@@ -24,7 +24,7 @@ class _CardListComponentState extends State<CardListComponent> {
   }
 
   Widget showCards(
-      AsyncSnapshot<List<ImageModel>> snapshot, BuildContext context) {
+      AsyncSnapshot<List<ImageEntity>> snapshot, BuildContext context) {
     List<Widget> cards = [];
 
     // has data
@@ -82,7 +82,7 @@ class _CardListComponentState extends State<CardListComponent> {
   // render widget
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<ImageModel>>(
+    return FutureBuilder<List<ImageEntity>>(
       future: imagesRepository.getImages(
         path: widget.path,
       ),

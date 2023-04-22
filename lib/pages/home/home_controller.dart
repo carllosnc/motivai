@@ -1,18 +1,18 @@
 import 'package:flutter/foundation.dart';
-import '../../domain/entities/folder.dart';
+import '/domain/domain.dart';
 
 class HomeController {
   static final instance = HomeController._();
   HomeController._();
 
-  dynamic category = ValueNotifier<FolderModel>(
-    FolderModel(
+  dynamic category = ValueNotifier<Folder>(
+    Folder(
       name: 'Tudo',
       path: 'motivai/*',
     ),
   );
 
-  setCategory(FolderModel value) {
+  setCategory(Folder value) {
     category.value = value;
   }
 }
