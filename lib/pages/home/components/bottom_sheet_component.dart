@@ -82,7 +82,7 @@ class ButtonSheetComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: ProjectColors.sheet,
-      height: 300,
+      height: double.infinity,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "399006906147",
+    "project_id": "cnc-motivai",
+    "storage_bucket": "cnc-motivai.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399006906147:android:f94d4e981ccf9932a2fe96",
+        "android_client_info": {
+          "package_name": "com.cnc.motivai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399006906147-7drqb5gduqqi47u7slsevd1253qig0ap.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDON89pnpCgUoejBKzkVkhHpfNBG9S3_hg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399006906147-7drqb5gduqqi47u7slsevd1253qig0ap.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399006906147:android:c0c02a68cc6d0df8a2fe96",
+        "android_client_info": {
+          "package_name": "com.example.motivai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399006906147-7drqb5gduqqi47u7slsevd1253qig0ap.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDON89pnpCgUoejBKzkVkhHpfNBG9S3_hg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399006906147-7drqb5gduqqi47u7slsevd1253qig0ap.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
