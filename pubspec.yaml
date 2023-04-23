@@ -40,7 +40,6 @@ dependencies:
   transparent_image: ^2.0.0
   dio_http_cache: ^0.3.0
   flutter_launcher_icons: ^0.9.3
-  flutter_native_splash: ^2.2.16
   share_plus: ^6.3.0
   google_fonts: ^3.0.1
   firebase_core: ^2.10.0
